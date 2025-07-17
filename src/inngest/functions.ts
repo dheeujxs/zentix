@@ -173,6 +173,7 @@ await step.run("save-result", async () => {
   if(isError){
   return await prisma.message.create({
   data:{
+    projectId:event.data.projectId,
       content:"Something went wrong. Please try again.",
       role:"ASSISTANT",
       type:"ERROR"
@@ -182,6 +183,7 @@ await step.run("save-result", async () => {
 
   const message = await prisma.message.create({
     data: {
+      projectId:event.data.projectId,
       role: "ASSISTANT",
       type: "RESULT",
       content: result.state.data.summary ?? "No summary generated",
