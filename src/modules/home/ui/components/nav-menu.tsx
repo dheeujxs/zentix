@@ -13,7 +13,7 @@ const NavMenu = ({isMoblie}:Props) => {
   return (
     <nav className={cn("flex gap-8", isMoblie && "flex items-center gap-12")}>
          {NavRoutes.map((route) => (
-                <Link key={route.link} href={route.link} className="text-white/70 hover:text-white transition  " >
+                <Link key={route.link} href={route.link} className="text-muted-foreground font-bold" >
                     {route.label}
                 </Link>
          ))}
