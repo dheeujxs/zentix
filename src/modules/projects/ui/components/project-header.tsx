@@ -56,7 +56,7 @@ export const PorjectHeader = ({projectId}:Props) =>{
                     <Link href={'/'} >
                     <ChevronLeftIcon />
                     <span>
-                        Go to dashboard
+                        Go to Home
                     </span>
                     </Link>
                 </DropdownMenuItem>

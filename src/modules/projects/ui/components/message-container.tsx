@@ -16,6 +16,7 @@ interface Props {
 export const MessagesContainer = ({projectId , activeFragment,setActiveFramgent}:Props) =>{
     const bottomRef = useRef<HTMLDivElement>(null)
     const trpc = useTRPC()
+    const lastAssistantMessageIdRef = useRef<string | null>(null)
       const {data: messages} = useSuspenseQuery(trpc.messages.getMany.queryOptions({
         projectId: projectId,
     },{
@@ -23,17 +24,21 @@ export const MessagesContainer = ({projectId , activeFragment,setActiveFramgent}
         refetchInterval: 5000,
     }))
 
-    //TODO:this is causing problem
 
-    // useEffect(() => {
-    //         const lastAssistanceMessageFragment = messages.findLast(
-    //             (message) => message.role === "ASSISTANT" && !!message.fragment
-    //         )
-    //         if(lastAssistanceMessageFragment){
-    //             setActiveFramgent(lastAssistanceMessageFragment.fragment)
+    useEffect(() =>{
+        const lastAssistanceMessage = messages.findLast(
+            (message) => message.role === "ASSISTANT"
+        )
 
-    //         }
-    // },[messages , setActiveFramgent])
+        if(
+            lastAssistanceMessage?.fragment &&
+            lastAssistanceMessage.id !== lastAssistantMessageIdRef.current
+        ){
+                setActiveFramgent(lastAssistanceMessage.fragment)
+                lastAssistantMessageIdRef.current = lastAssistanceMessage.id;
+        }
+
+    },[messages, setActiveFramgent])
 
     useEffect(() =>{
         bottomRef.current?.scrollIntoView();
