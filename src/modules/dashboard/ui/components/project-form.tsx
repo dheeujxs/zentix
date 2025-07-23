@@ -15,6 +15,7 @@ import {Form,FormField} from "@/components/ui/form"
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { PROJECT_TEMPLATES } from '../../constant'
+import { useClerk } from '@clerk/nextjs'
 
 
 const formSchema = z.object({
@@ -27,6 +28,7 @@ const formSchema = z.object({
 
 export const ProjectForm = () =>{
     const router  = useRouter()
+    const clerk = useClerk()
     const [isFocuesd , setIsFoucsed] = useState(false);
     const queryClient = useQueryClient()
 
@@ -47,7 +49,10 @@ export const ProjectForm = () =>{
 
         },
         onError:(error) =>{
-            toast.error(error.message);
+            toast.error(error.message)
+         if(error.data?.code === "UNAUTHORIZED"){
+            clerk.openSignIn()
+         }
         }
     }));
     const onSubmit = async(values:z.infer<typeof formSchema>) =>{
