@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs"
 import { Container } from "@/modules/home/ui/components/container"
 import { UserControl } from "@/components/user-control"
+import Link from "next/link"
 
 
 
@@ -17,7 +18,11 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between border border-transparent min-md:border-white/15 p-2.5 rounded-xl max-w-4xl mx-auto md:backdrop-blur-md">
                     <div className="flex items-center justify-center gap-2">
                         <Image height={12} width={12} src='/logo.svg' alt="zentix" className="w-auto h-8 min-md:h-12" />
-                    <p className="text-xl  min-md:text-2xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">Zentix</p>
+                    <p className="text-xl  min-md:text-2xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                       <Link href='/dashboard'>
+                        Zentix
+                        </Link>
+                        </p>
                
                  
                     </div> 

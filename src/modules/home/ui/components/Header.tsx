@@ -25,7 +25,9 @@ export const Header = () => {
                             className="h-8 md:h-12 w-auto"
                         />
                         <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                         <Link href='/'>
                             Zentix
+                            </Link>
                         </p>
                     </div>
 
