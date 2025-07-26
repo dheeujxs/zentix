@@ -6,6 +6,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import {
     ChevronDownIcon,
     ChevronLeftIcon,
+    LayoutDashboardIcon,
     SunMoonIcon
 } from 'lucide-react'
 
@@ -59,6 +60,16 @@ export const PorjectHeader = ({projectId}:Props) =>{
                         Go to Home
                     </span>
                     </Link>
+                 
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link href={'/dashboard'} >
+                    <LayoutDashboardIcon />
+                    <span>
+                        Go to Dashboard
+                    </span>
+                    </Link>
+                 
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuSub>
