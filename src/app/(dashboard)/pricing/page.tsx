@@ -18,7 +18,7 @@ const Page = () =>{
                     height={50}
                     className='hidden md:block'
                      />
-                </div>
+            </div>
                 <h1 className='text-xl md:text-3xl font-bold text-center'>Pricing</h1>
                 <p className='text-muted-foreground text-center text-sm md:text-base'> Choose the plan that fit your needs</p>
             <PricingTable 

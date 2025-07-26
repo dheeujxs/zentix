@@ -1,4 +1,4 @@
-import { Header } from "@/modules/home/ui/components/Header";
+import {  Navbar } from "@/modules/home/ui/components/Header";
 import React from "react";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 const  Layout  = ({children}:Props) => {
     return ( 
             <div>
-                <Header />
+                < Navbar/>
                 {children}
             </div>
      );
